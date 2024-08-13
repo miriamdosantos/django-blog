@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+from django.contrib.messages import constants as messages
 import dj_database_url
 if os.path.isfile('env.py'):
     import env
@@ -8,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
@@ -104,6 +105,11 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 
 USE_TZ = True
+
+MESSAGE_TAGS = {
+    messages.SUCCESS: 'alert-success',
+    messages.ERROR: 'alert-danger',
+}
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
